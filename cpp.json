@@ -1,0 +1,52 @@
+{
+	"Class HPP": {
+		"prefix": "class_hpp",
+		"body": [
+			"#ifndef ${TM_FILENAME/(.*)\\.hpp$/${1:/upcase}/}_HPP",
+			"# define ${TM_FILENAME/(.*)\\.hpp$/${1:/upcase}/}_HPP",
+			"",
+			"class ${TM_FILENAME/(.*)Class\\.hpp$/${1:/capitalize}/} {",
+			"",
+			"public: ",
+			"",
+			"\ttypedef ${TM_FILENAME/(.*)Class\\.hpp$/${1:/capitalize}/}\tt;",
+			"\t${TM_FILENAME/(.*)Class\\.hpp$/${1:/capitalize}/}(void); ",
+			"\t~${TM_FILENAME/(.*)Class\\.hpp$/${1:/capitalize}/}(void); ",
+			"",
+			"",
+			"private:",
+			"",
+			"};",
+			"",
+			"",
+			"#endif",
+			"",
+			"",
+			"#include \"${TM_FILENAME/(.*)\\.hpp$/${1:/capitalize}/}.hpp\"",
+			"",
+			"${TM_FILENAME/(.*)Class\\.hpp$/${1:/capitalize}::${1:/capitalize}/}(void) {",
+			"    return;",
+			"}",
+			"",
+			"${TM_FILENAME/(.*)Class\\.hpp$/${1:/capitalize}::~${1:/capitalize}/}(void) {",
+			"    return;",
+			"}",
+		],
+		"description": "Create the Class HPP file template"
+	},
+	"Getter Setter": {
+		"prefix": "get_set",
+		"body": [
+			"\t${1:type}\tget${3:Name}(void);",
+			"\tvoid\tset${3:Name}(${1:type} ${2:name});",
+			"",
+			"private:",
+			"",
+			"\t${1:type}\t_${2:name};",
+			"",
+			"${1:type}\t${TM_FILENAME/(.*)Class\\.hpp$/${1:/capitalize}/}::get${3:Name} (void) { return (this->_${2:name}); }",
+			"void\t${TM_FILENAME/(.*)Class\\.hpp$/${1:/capitalize}/}::set${3:Name} (${1:type} ${2:name}) { this->_${2:name} = ${2:name}; }",
+		],
+		"description": "Declares and defines a private variable with getter and setter"
+	}
+}
