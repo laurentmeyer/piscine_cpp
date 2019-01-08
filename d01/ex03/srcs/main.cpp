@@ -4,7 +4,7 @@
 
 int main(void)
 {
-	ZombieHorde	*horde = new ZombieHorde(5);
+	ZombieHorde	*horde = new ZombieHorde(12);
 	horde->announce();
 	std::cout << std::endl;
 	delete horde;

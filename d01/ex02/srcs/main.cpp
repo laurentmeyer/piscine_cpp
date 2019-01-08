@@ -5,7 +5,7 @@
 int main(void)
 {
 	ZombieEvent	factory;
-	Zombie		zombieOnTheStack = Zombie("JeanFion");
+	Zombie		zombieOnTheStack("JeanFion");
 	Zombie		*createdOnHeap = ZombieEvent::newZombie("Seth Guecko");
 	Zombie		*randomOnHeap = ZombieEvent::randomChump();
 
