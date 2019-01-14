@@ -1,25 +1,15 @@
 CC = 		clang++
-CFLAGS =	-Wall -Wextra -Werror -std=c++98
-BINARY =	ft_retro
+CFLAGS =	-g -Wall -Wextra -Werror
+BINARY =	eval_expr
 BUILDDIR =	./builds
 SOURCEDIR =	./srcs
 HEADERDIR = ./includes
 
-SRCFILES =	main.cpp 					\
-			TimeClass.cpp				\
-			GameManagerClass.cpp		\
-			InputManagerClass.cpp		\
-			DisplayManagerClass.cpp		\
-			FramebufferClass.cpp		\
-			AGameObjectClass.cpp			\
-			PlayerClass.cpp				\
-			EnemyClass.cpp				\
-			ProjectileClass.cpp			\
-			BackgroundClass.cpp			\
-			GameObjectManagerClass.cpp	\
+SRCFILES =	main.cpp			\
+			FixedClass.cpp		\
+			# EvalClass.cpp		\
 
 CCHEADERS = -I./$(HEADERDIR)
-CCFRAMEWORKS = -lncurses
 
 SOURCES = $(SRCFILES:%.cpp=$(SOURCEDIR)/%.cpp)
 OBJECTS = $(SOURCES:$(SOURCEDIR)/%.cpp=$(BUILDDIR)/%.o)
@@ -29,7 +19,7 @@ OBJECTS = $(SOURCES:$(SOURCEDIR)/%.cpp=$(BUILDDIR)/%.o)
 all : $(BINARY)
 
 $(BINARY) : $(OBJECTS)
-	$(CC) $(CCHEADERS) $(OBJECTS) $(CCFRAMEWORKS) -o $(BINARY)
+	$(CC) $(CCHEADERS) $(OBJECTS) -o $(BINARY)
 
 $(BUILDDIR)/%.o : $(SOURCEDIR)/%.cpp
 	@mkdir -p $(@D)
@@ -44,4 +34,9 @@ fclean: clean
 re: fclean all
 
 test: all
+	# ./$(BINARY) "coucou"
 	./$(BINARY)
+	./$(BINARY) "0 + 0"
+	./$(BINARY) "( 18.18 + 3.03 ) * 2"
+	./$(BINARY) "-1.12 * -1.4"
+	./$(BINARY) "(1 + (2.33 / (4.3 - 16))) * 4.2"

@@ -26,7 +26,8 @@ Fixed::Fixed(int const i)
 
 Fixed::Fixed(Fixed const &src)
 {
-	this->_rawBits = src.getRawBits();
+	std::cout << "Copy constructor called" << std::endl;
+	*this = src;
 	return;
 }
 
@@ -50,41 +51,6 @@ Fixed &Fixed::operator=(Fixed const &rhs)
 	return *this;
 }
 
-bool Fixed::operator>(Fixed const &rhs) const
-{
-	return this->_rawBits > rhs.getRawBits();
-}
-
-bool Fixed::operator>=(Fixed const &rhs) const
-{
-	return this->_rawBits >= rhs.getRawBits();
-}
-
-bool Fixed::operator<(Fixed const &rhs) const
-{
-	return this->_rawBits < rhs.getRawBits();
-}
-
-bool Fixed::operator<=(Fixed const &rhs) const
-{
-	return this->_rawBits <= rhs.getRawBits();
-}
-
-bool Fixed::operator==(Fixed const &rhs) const
-{
-	return this->_rawBits == rhs.getRawBits();
-}
-
-bool Fixed::operator!=(Fixed const &rhs) const
-{
-	return this->_rawBits != rhs.getRawBits();
-}
-
-Fixed &	Fixed::operator+(Fixed const &rhs)
-{
-	//
-}
-
 int Fixed::toInt(void) const
 {
 	return this->_rawBits >> this->_fractionalBits;
@@ -92,14 +58,14 @@ int Fixed::toInt(void) const
 
 float Fixed::toFloat(void) const
 {
-	int mask = 0;
+	int		mask = 0;
 
 	for (int i = 0; i < this->_fractionalBits; i++)
 		mask = (mask << 1) | 1;
 	return (float)(this->toInt()) + (float)(this->_rawBits & mask) / (float)(1 << this->_fractionalBits);
 }
 
-std::ostream &operator<<(std::ostream &o, Fixed const &rhs)
+std::ostream &	operator<< (std::ostream & o, Fixed const & rhs)
 {
 	o << rhs.toFloat();
 	return o;

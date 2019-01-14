@@ -33,6 +33,7 @@ public:
 	void				setRawBits(int const raw);
 	int					toInt(void) const;
 	float				toFloat(void) const;
+	std::string const	toString(void) const;
 
 	static Fixed &min(Fixed &a, Fixed &b);
 	static const Fixed &min(Fixed const &a, Fixed const &b);

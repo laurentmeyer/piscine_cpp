@@ -1,5 +1,6 @@
 #include "FixedClass.hpp"
 #include <iostream>
+#include <sstream>
 #include <cmath>
 
 const int Fixed::_fractionalBits = 8;
@@ -26,8 +27,7 @@ Fixed::Fixed(int const i)
 
 Fixed::Fixed(Fixed const &src)
 {
-	// std::cout << "Copy constructor called" << std::endl;
-	*this = src;
+	this->_rawBits = src.getRawBits();
 	return;
 }
 
@@ -177,6 +177,13 @@ Fixed &	Fixed::min(Fixed &a, Fixed &b)
 const Fixed &	Fixed::min(Fixed const &a, Fixed const &b)
 {
 	return a < b ? a : b;
+}
+
+std::string const	Fixed::toString(void) const
+{
+	std::ostringstream ss;
+	ss << this->toFloat();
+	return ss.str();
 }
 
 std::ostream &operator<<(std::ostream &o, Fixed const &rhs)

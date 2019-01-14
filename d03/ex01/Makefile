@@ -1,25 +1,15 @@
 CC = 		clang++
 CFLAGS =	-Wall -Wextra -Werror -std=c++98
-BINARY =	ft_retro
+BINARY =	fragtrap
 BUILDDIR =	./builds
 SOURCEDIR =	./srcs
 HEADERDIR = ./includes
 
-SRCFILES =	main.cpp 					\
-			TimeClass.cpp				\
-			GameManagerClass.cpp		\
-			InputManagerClass.cpp		\
-			DisplayManagerClass.cpp		\
-			FramebufferClass.cpp		\
-			AGameObjectClass.cpp			\
-			PlayerClass.cpp				\
-			EnemyClass.cpp				\
-			ProjectileClass.cpp			\
-			BackgroundClass.cpp			\
-			GameObjectManagerClass.cpp	\
+SRCFILES =	main.cpp				\
+			FragTrapClass.cpp		\
+			ScavTrapClass.cpp		\
 
 CCHEADERS = -I./$(HEADERDIR)
-CCFRAMEWORKS = -lncurses
 
 SOURCES = $(SRCFILES:%.cpp=$(SOURCEDIR)/%.cpp)
 OBJECTS = $(SOURCES:$(SOURCEDIR)/%.cpp=$(BUILDDIR)/%.o)
@@ -29,7 +19,7 @@ OBJECTS = $(SOURCES:$(SOURCEDIR)/%.cpp=$(BUILDDIR)/%.o)
 all : $(BINARY)
 
 $(BINARY) : $(OBJECTS)
-	$(CC) $(CCHEADERS) $(OBJECTS) $(CCFRAMEWORKS) -o $(BINARY)
+	$(CC) $(CCHEADERS) $(OBJECTS) -o $(BINARY)
 
 $(BUILDDIR)/%.o : $(SOURCEDIR)/%.cpp
 	@mkdir -p $(@D)
