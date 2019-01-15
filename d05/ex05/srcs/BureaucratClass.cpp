@@ -4,6 +4,8 @@
 
 unsigned int const Bureaucrat::_maxGrade = 1;
 unsigned int const Bureaucrat::_minGrade = 150;
+std::string const	Bureaucrat::_someRandomNames[] = {"Jean-Marc", "Jean-Michel", "Jean-Jean", "Jean-Rocco"};
+size_t const		Bureaucrat::_someRandomNamesCount = sizeof(Bureaucrat::_someRandomNames) / sizeof(Bureaucrat::_someRandomNames[0]);
 
 Bureaucrat::Bureaucrat(std::string name, unsigned int grade) : _name(name)
 {
@@ -14,6 +16,13 @@ Bureaucrat::Bureaucrat(std::string name, unsigned int grade) : _name(name)
 Bureaucrat::Bureaucrat(Bureaucrat const &src)
 {
 	*this = src;
+	return;
+}
+
+Bureaucrat::Bureaucrat(void) : _name(Bureaucrat::_someRandomNames[std::rand() % Bureaucrat::_someRandomNamesCount])
+{
+	unsigned int grade = std::rand() % (Bureaucrat::_minGrade - Bureaucrat::_maxGrade) + Bureaucrat::_maxGrade;
+	this->_setGrade(grade);
 	return;
 }
 

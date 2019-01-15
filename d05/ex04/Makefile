@@ -1,6 +1,6 @@
 CC = 		clang++
-CFLAGS =	-Wall -Wextra -Werror
-BINARY =	knightsWhoSayNi
+CFLAGS =	-Wall -Wextra -Werror -g
+BINARY =	welcomeToTheANPE
 BUILDDIR =	./builds
 SOURCEDIR =	./srcs
 HEADERDIR = ./includes
@@ -11,6 +11,8 @@ SRCFILES =	main.cpp						\
 			RobotomyRequestFormClass.cpp	\
 			PresidentialPardonFormClass.cpp	\
 			FormClass.cpp					\
+			InternClass.cpp					\
+			OfficeBlockClass.cpp			\
 
 CCHEADERS = -I./$(HEADERDIR)
 

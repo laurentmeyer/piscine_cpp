@@ -1,6 +1,6 @@
 #include <iostream>
 #include "BureaucratClass.hpp"
-#include "AFormClass.hpp"
+#include "FormClass.hpp"
 #include "ShrubberyCreationFormClass.hpp"
 #include "RobotomyRequestFormClass.hpp"
 #include "PresidentialPardonFormClass.hpp"
@@ -39,11 +39,7 @@ int main()
 		std::cout << std::endl << std::endl;
 		general.executeForm(p);
 	}
-	catch (AForm::GradeTooHighException &e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-	catch (AForm::GradeTooLowException &e)
+	catch (Form::AFormException &e)
 	{
 		std::cout << e.what() << std::endl;
 	}

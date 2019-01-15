@@ -1,6 +1,6 @@
 CC = 		clang++
-CFLAGS =	-Wall -Wextra -Werror
-BINARY =	knightsWhoSayNi
+CFLAGS =	-Wall -Wextra -Werror -g
+BINARY =	lAttaqueDesClowns
 BUILDDIR =	./builds
 SOURCEDIR =	./srcs
 HEADERDIR = ./includes
@@ -10,7 +10,10 @@ SRCFILES =	main.cpp						\
 			ShrubberyCreationFormClass.cpp	\
 			RobotomyRequestFormClass.cpp	\
 			PresidentialPardonFormClass.cpp	\
+			CentralBureaucracyClass.cpp		\
 			FormClass.cpp					\
+			InternClass.cpp					\
+			OfficeBlockClass.cpp			\
 
 CCHEADERS = -I./$(HEADERDIR)
 

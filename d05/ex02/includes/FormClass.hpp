@@ -1,17 +1,31 @@
-#ifndef AFORMCLASS_HPP
-#define AFORMCLASS_HPP
+#ifndef FormClass_HPP
+#define FormClass_HPP
 
 #include <iostream>
 
-class AForm;
+class Form;
 
 #include "BureaucratClass.hpp"
 
-class AForm
+class Form
 {
 
   public:
-	class FormNotSignedException : public std::exception
+	class AFormException : public std::exception
+	{
+	  public:
+		AFormException(void);
+		AFormException(AFormException const &src);
+		~AFormException(void) throw();
+		AFormException &operator=(AFormException const &rhs);
+
+		virtual char const *what() const throw() = 0;
+
+	  private:
+	};
+
+  public:
+	class FormNotSignedException : public AFormException
 	{
 	  public:
 		FormNotSignedException(void);
@@ -24,7 +38,7 @@ class AForm
 	  private:
 	};
 
-	class GradeTooLowException : public std::exception
+	class GradeTooLowException : public AFormException
 	{
 	  public:
 		GradeTooLowException(void);
@@ -37,7 +51,7 @@ class AForm
 	  private:
 	};
 
-	class GradeTooHighException : public std::exception
+	class GradeTooHighException : public AFormException
 	{
 	  public:
 		GradeTooHighException(void);
@@ -50,23 +64,22 @@ class AForm
 	  private:
 	};
 
-	AForm(std::string const name, unsigned int minSignature, unsigned int minExecution);
-	AForm(AForm const &src);
-	~AForm(void);
+	Form(std::string const name, unsigned int minSignature, unsigned int minExecution);
+	Form(Form const &src);
+	~Form(void);
 
 	bool getSigned(void) const;
 	void beSigned(Bureaucrat &b);
 	unsigned int getMinGradeSign(void) const;
 	unsigned int getMinGradeExecute(void) const;
 	std::string const toString(void) const;
-	// virtual void checkRights(Bureaucrat const &e) const;
 	virtual void execute(Bureaucrat const &executor) const;
 	virtual void action(void) const = 0;
 
-	AForm &operator=(AForm const &rhs);
+	Form &operator=(Form const &rhs);
 
   protected:
-	AForm(void);
+	Form(void);
 
 	void _setSigned(bool s);
 
@@ -78,6 +91,6 @@ class AForm
 	std::string const _name;
 };
 
-std::ostream &operator<<(std::ostream &o, AForm const &rhs);
+std::ostream &operator<<(std::ostream &o, Form const &rhs);
 
 #endif

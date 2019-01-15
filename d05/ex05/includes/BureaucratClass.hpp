@@ -36,13 +36,14 @@ public:
 	private:
 	};
 
+	Bureaucrat(void);
+	Bureaucrat(std::string name);
 	Bureaucrat(std::string name, unsigned int grade);
 	Bureaucrat(Bureaucrat const &src);
 	~Bureaucrat(void);
 
 	Bureaucrat &operator=(Bureaucrat const &rhs);
 
-	Bureaucrat(std::string name);
 
 	static unsigned int getMinGrade (void);
 	static unsigned int getMaxGrade (void);
@@ -61,8 +62,9 @@ private:
 	void _setGrade(unsigned int grade);
 	std::string const _name;
 	unsigned int _grade;
+	static std::string const	_someRandomNames[];
+	static size_t const			_someRandomNamesCount;
 
-	Bureaucrat(void);
 };
 
 std::ostream &operator<<(std::ostream &o, Bureaucrat const &rhs);

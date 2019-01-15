@@ -1,6 +1,6 @@
 CC = 		clang++
-CFLAGS =	-Wall -Wextra -Werror
-BINARY =	knightsWhoSayNi
+CFLAGS =	-Wall -Wextra -Werror -g
+BINARY =	robertDeNiro
 BUILDDIR =	./builds
 SOURCEDIR =	./srcs
 HEADERDIR = ./includes
@@ -11,6 +11,7 @@ SRCFILES =	main.cpp						\
 			RobotomyRequestFormClass.cpp	\
 			PresidentialPardonFormClass.cpp	\
 			FormClass.cpp					\
+			InternClass.cpp					\
 
 CCHEADERS = -I./$(HEADERDIR)
 
