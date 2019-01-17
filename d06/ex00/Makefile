@@ -1,5 +1,5 @@
 CC = 		clang++
-CFLAGS =	-Wall -Wextra -Werror
+CFLAGS =	-Wall -Wextra -Werror -g
 BINARY =	convert
 BUILDDIR =	./builds
 SOURCEDIR =	./srcs
@@ -33,4 +33,28 @@ fclean: clean
 re: fclean all
 
 test: all
-	./$(BINARY)
+	./$(BINARY) 0
+	@echo "================"
+	./$(BINARY) "+"
+	@echo "================"
+	./$(BINARY) nan
+	@echo "================"
+	./$(BINARY) 42.f
+	@echo "================"
+	./$(BINARY) 42f
+	@echo "================"
+	./$(BINARY) 42ff
+	@echo "================"
+	./$(BINARY) 42.
+	@echo "================"
+	./$(BINARY) 42.0f
+	@echo "================"
+	./$(BINARY) -420.024f
+	@echo "================"
+	./$(BINARY) --420+.024f
+	@echo "================"
+	./$(BINARY) -4300000000f
+	@echo "================"
+	./$(BINARY) -inff
+	@echo "================"
+	./$(BINARY) "  salut les losers "

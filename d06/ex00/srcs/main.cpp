@@ -9,6 +9,9 @@ int main(int ac, char **av)
 		return (0);
 	}
 	Converter converter(av[1]);
-	std::cout << static_cast<int>(converter) << std::endl;
+	std::cout << "char: " << converter.toCharString() << std::endl;
+	std::cout << "int: " << converter.toIntString() << std::endl;
+	std::cout << "float: " << converter.toFloatString() << std::endl;
+	std::cout << "double: " << converter.toDoubleString() << std::endl;
 	return 0;
 }
